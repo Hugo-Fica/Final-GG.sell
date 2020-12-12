@@ -1,18 +1,25 @@
 {% extends 'base_generica.html' %}
-{% load static %}
 {% block content %}
 <head>
+    {% load static%}
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <div class="page-header">
+        <a href="{% url 'juegos' %}" class="top-menu"><i class="fa fa-gamepad"></i></a>
+        <a href="{% url 'index' %}" class="top-menu"><i class="fa fa-home"></i></a>
+        <a href="#" class="top-menu" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-user-plus"></i></a>
+        <h1><a href="{% url 'juegos' %}">Diversión sin límites</a></h1>
+    </div>
+    
 </head>
-<div class="container-fluid">
+<div class="contenedor_juegos">
     <h1>Titulo: {{juego.titulo}}</h1>
-    <div class="row">
-        <div class="col-sm-1">
-            <div class="img-thumbnail">
-                <img src="{{juego.foto.url}}" width="80px" height="80px">
+    <div class="contenedor_juegos">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="juegos">
+                <img src="{{juego.foto.url}}" >
             </div>
         </div>
-        <div class="col-sm-11">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <p><strong>Desarrollador: </strong><a href="{{ juego.desarrolador.get_absolute_url }}">{{juego.desarrollador}}</a></p>
             <p><strong>Sinopsis: </strong>{{juego.sinopsis}}</p>
             <p><strong>Idiomas: </strong>{{juego.idiomas}}</p>

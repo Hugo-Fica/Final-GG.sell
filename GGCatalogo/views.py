@@ -4,8 +4,21 @@ from django.shortcuts import render
 from .models import Juego, Inventario, Desarrollador
 from django.views import generic
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets 
+from .serializers import JuegoSerializer
 
 # Create your views here.
+
+
+def juego_list(request):
+    juegos = Juegos.objects.all()
+    data = {
+        'juegos': juegos
+    }   
+    return render(request, 'GGcatalogo/juego_list.html', data)
+    
+
+
 def index(request):
     numero_juego = Juego.objects.all().count()
     numero_inventario = Inventario.objects.all().count()
@@ -19,7 +32,7 @@ def index(request):
     # Renderiza la plantilla HTML index.html con los en la variable contexto
     return render(request, 
                  'index.html', 
-                 context={'numero_juegos': numero_juego,
+                 context={  'numero_juegos': numero_juego,
                             'numero_inventario': numero_inventario,
                             'numero_inventario_disponible': numero_inventario_disponible, 
                             'numero_autores': numero_desarrolladores,
@@ -37,4 +50,8 @@ class DesarrolladorListView(generic.ListView):
 
 class DesarrolladorDetailView(generic.DetailView):
     model = Desarrollador
+
+class JuegoViewSet(viewsets.ModelViewSet):
+    queryset = Juego.objects.all()
+    serializer_class = JuegoSerializer
 

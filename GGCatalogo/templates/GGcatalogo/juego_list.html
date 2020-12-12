@@ -1,7 +1,7 @@
 {% extends 'base_generica.html' %}
-{% load static %}
 {% block content %}
 <head>
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
     <meta charset="UTF-8" />
     <meta
@@ -23,7 +23,7 @@
       type="text/css"
       href="https://fonts.googleapis.com/css?family=Lobster"
     />
-    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
     <title>GGsell.cl</title>
 </head>
 <body>
@@ -31,42 +31,21 @@
       <a href="{% url 'juegos' %}" class="top-menu"
         ><i class="fa fa-gamepad"></i 
       ></a>
-      <a href="GGsell-registroJugador.html" class="top-menu"
-        ><i class="fa fa-user-plus"></i
-      ></a>
       <a href="{% url 'index' %}" class="top-menu"
         ><i class="fa fa-home"></i
       ></a>
       <h1><a href="{% url 'index' %}">GGsell</a></h1>
     </div>
-    <div class="content container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="post">
-            <div class="date" style="float: right">
-            </div>
-            <h2><a href="">Diversión sin límites</a></h2>
-            <p>
-              <
-              <div class="cod">
-                <img class="d-block w-100" src="imagenes/Call-Of-Duty.jpg"  >
-              </div>
-            </p>
-            <p>
-              <div class="fifa">
-                <img class="d-block w-100" src="imagenes/fifa-21.jpg" >
-              </div>
-            </p>
-            <p>
-              <div class="lolsito">
-                <img class="d-block w-100" src="imagenes/god_of_war.png" >
-              </div>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <h2>Diversión sin límites</h2>
+    <div class="contenedor_juegos">
+      {% for juego in juego_list %}
+      <div class="juegos">
+        <a href="{{ juego.get_absolute_url }}">
+          <h5>{{ juego.titulo }}</h5>
+          <h2>({{juego.desarrollador}})</h2>
+          <img src="{{juego.foto.url }}"></a>
+  </div>
+    {% endfor %}
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

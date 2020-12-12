@@ -5,6 +5,7 @@ from .models import Desarrollador, Genero, Juego, Idiomas, Inventario
 admin.site.register(Idiomas)
 admin.site.register(Genero)
 
+
 @admin.register(Desarrollador)
 class DesarrolladorAdmin(admin.ModelAdmin):
     list_display = ('desarrollador', 'creacion')

@@ -14,14 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.urls.conf import include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from GGCatalogo import views 
+
+router = routers.DefaultRouter()
+router.register(r'juego', views.JuegoViewSet)
+
 
 
 urlpatterns = [
+    path('api',include(router.urls)),
+    path('api-auth',include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('GGCatalogo/', include('GGCatalogo.urls')),
     path('', RedirectView.as_view(url='GGCatalogo/', permanent=True)),
