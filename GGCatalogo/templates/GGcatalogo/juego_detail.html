@@ -1,0 +1,32 @@
+{% extends 'base_generica.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+</head>
+<div class="container-fluid">
+    <h1>Titulo: {{juego.titulo}}</h1>
+    <div class="row">
+        <div class="col-sm-1">
+            <div class="img-thumbnail">
+                <img src="{{juego.foto.url}}" width="80px" height="80px">
+            </div>
+        </div>
+        <div class="col-sm-11">
+            <p><strong>Desarrollador: </strong><a href="{{ juego.desarrolador.get_absolute_url }}">{{juego.desarrollador}}</a></p>
+            <p><strong>Sinopsis: </strong>{{juego.sinopsis}}</p>
+            <p><strong>Idiomas: </strong>{{juego.idiomas}}</p>
+            <p><strong>Genero: </strong>{% for genero in juego.genero.all %}{{ genero }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
+        </div>
+    
+    
+        <div style="margin-left: 20px; margin-top: 20px;">
+            <h4>Juegos</h4>
+            {% for juego in juego.inventario_set.all %}
+            <hr>
+            <p class="{% if juego.estado == 'd' %}text-success{% elif juego.estado == 'm' %}text-danger{% else %}text-warning{% endif%}">{{juego.get_estado_display}}</p>
+            <p class="text-muted"><strong>Id: </strong>{{juego.id}}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base_generica.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+</head>
+<h1>Listado de Juegos</h1>
+
+{% if juego_list %}
+<ul>
+    {% for juego in juego_list %}
+    <li>
+        <a href="{{ juego.get_absolute_url }}">{{ juego.titulo }}</a>  ({{juego.desarrollador}})
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No hay juegos en la tienda</p>
+{% endif %}
+
+{% endblock %}
