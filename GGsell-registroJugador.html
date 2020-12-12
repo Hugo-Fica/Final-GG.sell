@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lobster" />
+    <link rel="stylesheet" href="css/estilos.css" />
+
+    <title>GGsell.cl</title>
+  </head>
+
+  <body>
+    <div class="page-header">
+      <a href="GGsell-novedades.html" class="top-menu"
+        ><i class="fa fa-gamepad"></i
+      ></a>
+      <a href="GGsell-registroJugador.html" class="top-menu"
+        ><i class="fa fa-user-plus"></i
+      ></a>
+      <h1><a href="GGsell-inicio.html">Diversion sin limites</a></h1>
+    </div>
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Nuevo Jugador</h2>
+          <form id="form-nuevousuario" method="POST">
+            <div class="form-group">
+              <label for="idNombreCompleto">Nombre</label>
+              <input type="text" class="form-control" id="idNombreCompleto" name="idNombreCompleto" required />
+            </div>
+            <div class="form-group">
+              <label for="idEdad">Edad</label>
+              <input type="number" class="form-control" id="idEdad" name="idEdad" required />
+            </div>
+            <div class="form-group">
+              <label for="idnickName">NickName</label>
+              <input type="text" class="form-control" id="idnickName" name="idnickName" required />
+            </div>
+            <div class="form-group">
+              <label for="idCorreo">Correo</label>
+              <input type="email" class="form-control" id="idCorreo" name="idCorreo" required />
+            </div>
+            <div class="form-group">
+              <label for="idContraseña">Contraseña</label>
+              <input type="password" class="form-control" id="idContraseña" name="idContraseña" required />
+            </div>
+            <div class="form-group">
+                <label for="idReContraseña">RepetirContraseña</label>
+                <input type="password" class="form-control" id="idReContraseña" name="idReContraseña" required />
+              </div>
+            <button id="grabar" type="submit" class="save btn btn-primary">Grabar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_es.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/validacion.js"></script>
+    <script>
+      window.addEventListener('load', () =>{
+        document.querySelector('#grabar').addEventListener('click', function (evento){
+          let Nombre = document.querySelector('idNombreCompleto').value;
+          let Edad = document.querySelector('idEdad').value;
+          let NickName = document.querySelector('idnickName').value;
+          let Correo = document.querySelector('idCorreo').value;
+          let Contraseña = document.querySelector('idContraseña').value;
+          let RepetirContraseña = document.querySelector('idReContraseña').value;
+
+          sessionStorage.setItem(Nombre,Edad,NickName,Correo,Contraseña,RepetirContraseña);
+        });
+      });
+    </script> 
+  </body>
+</html>
