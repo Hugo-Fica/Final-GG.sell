@@ -29,11 +29,10 @@
   </head>
   <body>
     <div class="page-header">
-      <a href="GGsell-novedades.html" class="top-menu"><i class="fa fa-gamepad"></i></a>
-      <a href="GGsell-registroJugador.html" class="top-menu"><i class="fa fa-user-plus"></i></a>
-      <a href="GGsell-detalle.html" class= "top-menu"><i class="fa fa-home"></i></a>
-      <a href="#" class="top-menu" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-user"></i></a>
-      <h1><a href="GGsell-inicio.html">Diversión sin límites</a></h1>
+      <a href="{% url 'juegos' %}" class="top-menu"><i class="fa fa-gamepad"></i></a>
+      <a href="{% url 'index' %}" class= "top-menu"><i class="fa fa-home"></i></a>
+      <a href="#" class="top-menu" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-user-plus"></i></a>
+      <h1><a href="{% url 'juegos' %}">Diversión sin límites</a></h1>
     </div>
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
