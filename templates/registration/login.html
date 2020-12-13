@@ -27,6 +27,7 @@
             <td>{{form.password}}</td>
         </div>
         <div>
+            <a href="{% url 'social:begin' 'facebook' %}">Login con facebook</a>
             <input type="submit" value="Login">
             <input type="hidden" name="next" value="{{ next }}">
         </div>

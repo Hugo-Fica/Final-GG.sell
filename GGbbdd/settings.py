@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+SOCIAL_AUTH_FACEBOOK_KEY = '851406385606305'
+SOCIAL_AUTH_FACEBOOK_SECRET = '284438a3ccad30cc556212da233290a4'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     'GGCatalogo',
     'colorfield',
     'rest_framework',
+    'social_django',
 ]
 
 X_FRAME_OPTIONS='SAMEORIGIN' 
@@ -52,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'GGbbdd.urls'
@@ -70,6 +76,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+
             ],
         },
     },
@@ -133,3 +142,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR , 'media/')
 
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = (
+'social_core.backends.facebook.FacebookOAuth2',
+'django.contrib.auth.backends.ModelBackend',
+)
+
+ 
